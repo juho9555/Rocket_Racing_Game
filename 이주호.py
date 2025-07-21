@@ -4,20 +4,22 @@
 import turtle
 import random
 
-# 화면 설정
+# === 화면 설정 ===
 screen = turtle.Screen()
 screen.bgcolor("black")
-screen.title("🚀 Rocket Launch Race - Version 2 with Colorful Stars 🚀")
+screen.title("🚀 Rocket Rush 🚀")
 
-screen.tracer(0)  # 애니메이션 끄기
+screen.tracer(0)  # 별 배경 빠르게 그리기
 
+# === 별 배경 ===
 stars = turtle.Turtle()
 stars.hideturtle()
 stars.penup()
 
-star_colors = ["white", "light yellow", "light blue", "light gray", "cyan", "pink"]
+# 별 색상 (빨간색 추가!)
+star_colors = ["white", "light yellow", "light blue", "light gray", "cyan", "pink", "red"]
 
-for _ in range(300):
+for _ in range(300):  # 별 300개
     x = random.randint(-300, 300)
     y = random.randint(-250, 300)
     stars.goto(x, y)
@@ -25,23 +27,23 @@ for _ in range(300):
     stars.dot(random.randint(1, 4))
 
 screen.update()
-screen.tracer(1)  # 애니메이션 다시 켜기
+screen.tracer(1)  # 다시 애니메이션 켜기
 
-# 로켓 1
+# === 로켓 1 ===
 rocket_one = turtle.Turtle()
 rocket_one.shape("arrow")
 rocket_one.color("red")
-rocket_one.shapesize(3, 1)
+rocket_one.shapesize(3, 1)  # 길쭉한 느낌
 rocket_one.penup()
 rocket_one.goto(-50, -250)
-rocket_one.setheading(90)
+rocket_one.setheading(90)  # 위쪽으로
 
-# 로켓 2
+# === 로켓 2 ===
 rocket_two = rocket_one.clone()
 rocket_two.color("cyan")
 rocket_two.goto(50, -250)
 
-# 결승선
+# === 결승선 ===
 goal = turtle.Turtle()
 goal.hideturtle()
 goal.color("white")
@@ -50,6 +52,7 @@ goal.goto(-200, 200)
 goal.pendown()
 goal.forward(400)
 
+# === 연기/불꽃 효과 ===
 def draw_blast(rocket):
     blast = turtle.Turtle()
     blast.hideturtle()
@@ -73,6 +76,7 @@ def draw_blast(rocket):
         blast.color("gray")
         blast.dot(random.randint(4, 8))
 
+# === 주사위 ===
 die = [1, 2, 3, 4, 5, 6]
 
 for _ in range(50):
